@@ -1,10 +1,12 @@
 import React from 'react';
 
 const Select = (props) => {
-    const { name, ...otherProps } = props;
-    const { options } = otherProps;
+    const { name, value, changeHandler, options } = props;
     return (
-        <select>
+        <select
+            value={value}
+            onChange={(e) => changeHandler(name, e.target.value)}
+        >
             {options.map((option, index) => (
                 <option
                     key={index}
