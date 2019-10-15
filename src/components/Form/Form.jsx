@@ -1,4 +1,5 @@
 import React, { createContext } from 'react';
+import merge from 'deepmerge';
 import Field from '../Field';
 import Group from '../Group';
 import Set from '../Set';
@@ -9,20 +10,41 @@ const SetValueContext = createContext(() => { });
 const Form = (props) => {
     const { definition } = props;
     const [formData, setFormData] = React.useState({});
-    const setValue = (name, value) => setFormData((prevFormData) => ({
-        ...prevFormData,
-        [name]: value,
-    }));
+    const setValue = (parent) => (name, value) => {
+        if (parent) {
+            const { name: groupName, type } = parent;
+            switch (type) {
+                case 'group':
+                    const updated = {
+                        [groupName]: {
+                            [name]: value,
+                        }
+                    };
+                    setFormData((prevFormData) => merge(prevFormData, updated));
+                    break;
+                case 'set':
+                    break;
+                default:
+                    console.debug(`unsupported parent type ${type}, setValue is skipped.`);
+                    break;
+            }
+        } else {
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                [name]: value,
+            }));
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('submitting');
+        // TODO run validation
     };
 
     return (
         <FormContext.Provider value={formData}>
             <SetValueContext.Provider value={setValue}>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} autoComplete="off">
                     {definition.map((field, index) => {
                         const { type } = field;
                         let children = (<Field key={index} definition={field} />);

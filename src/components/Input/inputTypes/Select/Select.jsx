@@ -4,9 +4,10 @@ const Select = (props) => {
     const { name, value, changeHandler, options } = props;
     return (
         <select
-            value={value}
+            value={value || "placeholder"}
             onChange={(e) => changeHandler(name, e.target.value)}
         >
+            <option value="placeholder" disabled>- Select -</option>
             {options.map((option, index) => (
                 <option
                     key={index}
