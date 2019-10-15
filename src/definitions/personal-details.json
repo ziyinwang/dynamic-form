@@ -1,0 +1,131 @@
+[
+    {
+        "name": "name",
+        "label": "Name",
+        "type": "text",
+        "multiparts": {
+            "seperator": " ",
+            "parts": [
+                {
+                    "placeholder": "First name"
+                },
+                {
+                    "placeholder": "Last name"
+                }
+            ]
+        },
+        "validators": [
+            "required"
+        ]
+    },
+    {
+        "name": "dob",
+        "label": "Date of Birth",
+        "type": "date",
+        "validators": [
+            "required",
+            "isLegalAdult"
+        ]
+    },
+    {
+        "name": "gender",
+        "label": "Gender",
+        "type": "select",
+        "options": [
+            {
+                "label": "female",
+                "value": 0
+            },
+            {
+                "label": "male",
+                "value": 1
+            }
+        ],
+        "validators": []
+    },
+    {
+        "name": "contact",
+        "label": "Contact Number",
+        "type": "set",
+        "element": {
+            "type": "group",
+            "fields": [
+                {
+                    "name": "type",
+                    "type": "select",
+                    "options": [
+                        {
+                            "label": "mobile",
+                            "value": "mobile"
+                        },
+                        {
+                            "label": "home",
+                            "value": "home"
+                        },
+                        {
+                            "label": "work",
+                            "value": "work"
+                        }
+                    ]
+                },
+                {
+                    "name": "value",
+                    "type": "text"
+                }
+            ]
+        },
+        "initialValue": [
+            {
+                "type": "mobile",
+                "value": ""
+            }
+        ]
+    },
+    {
+        "name": "consent",
+        "label": "Require guardian consent",
+        "type": "checkbox",
+        "validators": []
+    },
+    {
+        "name": "guardian",
+        "label": "Guardian Details",
+        "type": "group",
+        "fields": [
+            {
+                "name": "name",
+                "label": "Name",
+                "type": "text",
+                "multiparts": {
+                    "seperator": " ",
+                    "parts": [
+                        {
+                            "placeholder": "First name"
+                        },
+                        {
+                            "placeholder": "Last name"
+                        }
+                    ]
+                },
+                "validators": [
+                    "required"
+                ]
+            },
+            {
+                "name": "contact",
+                "label": "Contact Number",
+                "type": "number",
+                "validators": [
+                    "required"
+                ]
+            }
+        ],
+        "conditions": [
+            {
+                "path": "consent",
+                "operator": "equal",
+                "value": true
+            }
+        ]
+    }
+]
