@@ -73,17 +73,11 @@
                     "type": "text"
                 }
             ]
-        },
-        "initialValue": [
-            {
-                "type": "mobile",
-                "value": ""
-            }
-        ]
+        }
     },
     {
         "name": "consent",
-        "label": "Require guardian consent",
+        "label": "Require Guardian Consent?",
         "type": "checkbox",
         "validators": []
     },

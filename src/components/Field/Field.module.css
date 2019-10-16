@@ -1,0 +1,49 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-bottom: 5px;
+}
+
+.checkboxField {
+    display: flex;
+    flex-direction: row;
+}
+
+.inputRow,
+.labelRow {
+    display: flex;
+    flex-grow: 1;
+    margin-bottom: 5px;
+}
+
+.checkboxField .inputRow,
+.checkboxField .labelRow {
+    flex-grow: initial;
+}
+
+.checkboxField .inputRow input {
+    height: 20px;
+    margin-left: 20px;
+}
+
+.labelRow .label {
+    font-size: 14px;
+
+}
+
+.inputRow input {
+    display: flex;
+    flex-grow: 1;
+    height: 32px;
+    padding: 0 10px;
+    margin-right: 10px;
+}
+
+.inputRow select {
+    display: flex;
+    width: 30%;
+    height: 36px;
+    margin-right: 10px;
+    background: none;
+}

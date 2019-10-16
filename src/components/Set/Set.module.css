@@ -1,0 +1,40 @@
+.set {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 10px auto;
+}
+
+.set .add {
+    margin-left: 20px;
+    padding: 0 5px;
+}
+
+.inputRow,
+.labelRow {
+    display: flex;
+    flex-grow: 1;
+}
+
+.labelRow {
+    margin-bottom: 5px;
+}
+
+.labelRow .label {
+    font-size: 14px;
+}
+
+.inputRow input {
+    display: flex;
+    flex-grow: 1;
+    height: 32px;
+    padding: 0 10px;
+    margin-right: 10px;
+}
+
+.inputRow select {
+    display: flex;
+    flex-grow: 1;
+    height: 36px;
+    margin-right: 10px;
+}

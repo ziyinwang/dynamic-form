@@ -7,7 +7,10 @@ const Text = (props) => {
         <input
             type='text'
             value={value}
-            onChange={(e) => changeHandler(name, e.target.value)}
+            onChange={(e) => changeHandler({
+                name,
+                value: e.target.value,
+            })}
         />
     );
     if (multiparts) {
@@ -24,7 +27,10 @@ const Text = (props) => {
                         placeholder={part.placeholder}
                         onChange={(e) => {
                             const joined = refs.map(ref => ref.value.trim()).join(seperator);
-                            changeHandler(name, joined);
+                            changeHandler({
+                                name,
+                                value: joined,
+                            });
                         }}
                     />
                 )

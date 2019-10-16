@@ -1,0 +1,38 @@
+.group {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #eeeeee;
+}
+
+.inputRow,
+.labelRow {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.labelRow {
+    margin-bottom: 15px;
+}
+
+.labelRow .label {
+    font-size: 14px;
+}
+
+.inputRow input {
+    display: flex;
+    flex-grow: 1;
+    height: 32px;
+    padding: 0 10px;
+    margin-right: 10px;
+}
+
+.inputRow select {
+    display: flex;
+    flex-grow: 1;
+    height: 36px;
+    margin-right: 10px;
+}

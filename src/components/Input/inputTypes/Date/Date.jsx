@@ -57,7 +57,10 @@ const Date = (props) => {
     const refs = [];
     const handleChange = (e) => {
         const joined = refs.map(ref => ref.value.trim()).join('-');
-        changeHandler(name, joined);
+        changeHandler({
+            name,
+            value: joined,
+        });
     };
     return (
         <Fragment>

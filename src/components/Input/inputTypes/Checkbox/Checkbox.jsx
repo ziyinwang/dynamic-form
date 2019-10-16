@@ -6,7 +6,10 @@ const Checkbox = (props) => {
         <input
             type="checkbox"
             checked={value ? true : false}
-            onChange={(e) => changeHandler(name, e.target.checked)}
+            onChange={(e) => changeHandler({
+                name,
+                value: e.target.checked,
+            })}
         />
     );
 };

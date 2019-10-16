@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Field.module.css';
 import Input from '../Input';
 import { FormConsumer } from '../Form';
 
@@ -9,12 +10,16 @@ const Field = (props) => (
             const { name, label, ...inputProps } = definition;
             let value = '';
             if (parent) {
-                const { type: parentType, name: parentName } = parent;
-                switch (parentType) {
+                switch (parent.type) {
                     case 'group':
-                        value = formData[parentName]
-                            ? (formData[parentName][name] || '')
+                        value = formData[parent.name]
+                            ? (formData[parent.name][name] || '')
                             : '';
+                        break;
+                    case 'set':
+                        value = name
+                            ? (formData[parent.name][parent.index][name] || '')
+                            : (formData[parent.name][parent.index] || '');
                         break;
                     default:
                         break;
@@ -23,9 +28,15 @@ const Field = (props) => (
                 value = formData[name] || '';
             }
             return (
-                <div>
-                    <div>{label}</div>
-                    <div>
+                <div className={definition.type === 'checkbox' ? styles.checkboxField : styles.field}>
+                    {
+                        label && (
+                            <div className={styles.labelRow}>
+                                <span className={styles.label}>{label}</span>
+                            </div>
+                        )
+                    }
+                    <div className={styles.inputRow}>
                         <Input
                             name={name}
                             value={value}
